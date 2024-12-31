@@ -1,0 +1,16 @@
+@if(note){
+
+<div class="card flextitle flex-col w-full rounded-md bg-white p-4">
+  <div class="font-bold text-lg">{{ note.title }}</div>
+  <div class="text-sm mt-2">{{ note.description }}</div>
+  <br />
+  <hr />
+
+  @if (note.due) {
+  <div class="flex gap-2 text-xs text-slate-400">
+    <i class="bi bi-bell"></i>
+    {{ note.due }}
+  </div>
+  }
+</div>
+}

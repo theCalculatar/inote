@@ -1,0 +1,9 @@
+<div class="h-full w-full bg-slate-100 pt-12 px-8 overflow-hidden">
+  <div
+    class="overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+  >
+    <ng-container *ngFor="let note of notes">
+      <app-notes-card [note]="note" />
+    </ng-container>
+  </div>
+</div>
