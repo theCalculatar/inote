@@ -6,8 +6,12 @@
 
     <div class="flex">
       <input
+        id="search"
         type="text"
         placeholder="Search..."
+        [(ngModel)]="search"
+        (ngModelChange)="onInputChange()"
+        name="search"
         class="px-4 py-1 min-w-24 outline-1 outline h-10 outline-slate-300 rounded-md"
       />
     </div>

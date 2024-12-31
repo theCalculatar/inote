@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { NotesCardComponent } from '../../../../shared/components/notes-card/notes-card.component'
 import { NgFor } from '@angular/common'
 import { Note } from '../../../../core/interfaces/note.interface'
-// import { Note } from '../../../../core/interfaces/note.interface'
+import { NotesService } from '../../../../core/services/notes.service'
+
 @Component({
   selector: 'app-content-area',
   imports: [NotesCardComponent, NgFor],
@@ -12,33 +13,27 @@ import { Note } from '../../../../core/interfaces/note.interface'
 export class ContentAreaComponent implements OnInit {
   notes: Note[] = []
 
-  ngOnInit(): void {
-    this.notes.push({
-      id: 'id here',
-      title: 'some title',
-      description: 'its description',
-      due: Date().slice(0,15),
-    })
-    this.notes.push({
-      id: 'id here',
-      title: 'some title',
-      description: 'its description',
-      due: Date().slice(0,15),
-    })
-    this.notes.push({
-      id: 'id here',
-      title: 'some title',
-      description: 'its description',
-      due: Date().slice(0,15),
-    })
-    this.notes.push({
-      id: 'id here',
-      title: 'some title',
-      description: 'its description',
-      due: Date().slice(0,15),
-    })
-   
-  
+  constructor(private notesService: NotesService) {}
 
+  ngOnInit(): void {
+    this.getNotes()
+  }
+
+  getNotes() {
+    this.notesService.getNotes().subscribe({
+      next: (next) => {
+        this.notesService.isLoading = false
+        this.notesService.notes = next.data
+        this.notes = this.notesService.notes
+      },
+      error: (error) => {
+        this.notesService.isLoading = false
+        console.log(error)
+      },
+    })
+
+    this.notesService.search.subscribe((next) => {
+      this.notes = next
+    })
   }
 }
