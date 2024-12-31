@@ -2,6 +2,7 @@ import { Routes } from '@angular/router'
 import { AuthLayout } from './auth/authLayout.component'
 import { LoginComponent } from './auth/login/login.component'
 import { RegisterComponent } from './auth/register/register.component'
+import { LandingComponent } from './layouts/landing/landing.component'
 
 export const routes: Routes = [
   {
@@ -14,4 +15,11 @@ export const routes: Routes = [
     ],
     // redirectTo:'login'
   },
+  {
+    path:'',
+    component:LandingComponent,
+    children:[
+      // {path:'home',component:}
+    ]
+  }
 ]
