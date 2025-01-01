@@ -22,6 +22,11 @@ export class NotesService {
     })
   }
 
+  addNotes(note: Note): Observable<NoteNetworkCall> {
+    this.isLoading = true
+    return this.httpClient.post<NoteNetworkCall>('', note)
+  }
+
   searchNotes(search: string) {
     const notes = this.notes.filter((note) => {
       return note.description.includes(search) || note.title.includes(search)

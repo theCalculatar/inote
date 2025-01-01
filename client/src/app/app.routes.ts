@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component'
 import { RegisterComponent } from './auth/register/register.component'
 import { LandingComponent } from './layouts/landing/landing.component'
 import { ContentAreaComponent } from './layouts/landing/components/content-area/content-area.component'
+import { AddNoteComponent } from './features/add-note/add-note.component'
 
 export const routes: Routes = [
   {
@@ -21,6 +22,7 @@ export const routes: Routes = [
     component: LandingComponent,
     children: [
       { path: 'home', component: ContentAreaComponent },
+      { path: 'add-new', component: AddNoteComponent },
       { path: '', redirectTo: 'home',pathMatch:'full' },
     ],
   },
