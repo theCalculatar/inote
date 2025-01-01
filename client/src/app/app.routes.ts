@@ -21,9 +21,16 @@ export const routes: Routes = [
     path: '',
     component: LandingComponent,
     children: [
-      { path: 'home', component: ContentAreaComponent },
-      { path: 'add-new', component: AddNoteComponent },
-      { path: '', redirectTo: 'home',pathMatch:'full' },
+      {
+        path: 'home',
+        component: ContentAreaComponent,
+      },
+      {
+        path: 'add-new',
+        component: AddNoteComponent,
+        data: { title: 'Add task' },
+      },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
 ]
